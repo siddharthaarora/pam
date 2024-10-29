@@ -12,7 +12,6 @@ def pam(input=None):
 
     setup_llm()
     setup_embed_model()
-    vector_store = setup_vector_store(collection_name=COLLECTION_NAME)
     # vector_store = ingest(vector_store)
     # query_engine = index(vector_store)
     # query = query_pipeline(query_engine)

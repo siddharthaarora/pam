@@ -13,7 +13,7 @@ from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.core.readers import SimpleDirectoryReader
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.storage import StorageContext
-from indexer import index
+from index.indexer import index
 
 # work around for HugginFace FastToekenizers
 os.environ["TOKENIZERS_PARALLELISM"] = "false"

@@ -2,21 +2,26 @@ import os
 import sys
 from getpass import getpass
 from llama_index.core.settings import Settings
-from util.utils import setup_llm, setup_embed_model, setup_vector_store
-from index.ingest import ingest
-from index.index import index
+from util.utils import setup_llm, setup_embed_model
+from indexer.ingest import ingest
+from indexer.index import index
 from retrieval import query_pipeline
 
-def pam(input=None):
+def pam():
     COLLECTION_NAME = "XYZ"
 
     setup_llm()
+    
     setup_embed_model()
-    # vector_store = ingest(vector_store)
-    # query_engine = index(vector_store)
-    # query = query_pipeline(query_engine)
+    
+    nodes = ingest(
+        collection_name=COLLECTION_NAME,
+        docs_dir="docs/birthdays"
+    )
 
-    # query.run(input)
+    vector_index = index(nodes, index_dir="docs/index", rebuild_index=False)
+    
+    query_pipeline.query_pipeline(vector_index)
 
 if __name__ == "__main__":
     pam()

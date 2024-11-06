@@ -13,7 +13,7 @@ def query_pipeline(vector_store):
         retriever=retriver,
         query_engine=query_engine,
         llm=Settings.llm,
-        system_prompt="You are my personal assistant and have access to my calendar events, emails, messages and tasks",
+        system_prompt="You have access to birthdays, the birthday is given in the format month/day/year. Today's date is 11/5/2024. Answer questions on upcoming birthdays.",
         verbose=True
     )
 

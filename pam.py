@@ -8,19 +8,17 @@ from indexer.index import index
 from retrieval import query_pipeline
 
 def pam():
-    COLLECTION_NAME = "XYZ"
-
+    COLLECTION_NAME = "BIRTHDAYS"
     setup_llm()
-    
     setup_embed_model()
     
-    nodes = ingest(
+    birthday_nodes = ingest(
         collection_name=COLLECTION_NAME,
-        docs_dir="docs/birthdays"
+        docs_dir="docs/files"
     )
 
-    vector_index = index(nodes, index_dir="docs/index", rebuild_index=False)
-    
+    vector_index = index(birthday_nodes, index_dir="docs/index", rebuild_index=False)
+        
     query_pipeline.query_pipeline(vector_index)
 
 if __name__ == "__main__":
